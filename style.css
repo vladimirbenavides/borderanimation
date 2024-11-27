@@ -1,0 +1,53 @@
+*{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    background-color: darkslateblue;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 64px;
+}
+
+@property --angulo {
+    syntax: '<angle>';
+    inherits: false;
+    initial-value: 0deg;
+}
+
+.card{
+    position: relative;
+    width: 400px;
+    height: 200px;
+    display: grid;
+    place-items: center;
+    margin: 200px auto;
+    background-color: #1c1f2b;
+    color: wheat;
+    border-radius: 10px;
+}
+.card::after, .card::before{
+    content: '';
+    background: conic-gradient(from var(--angulo),red,orange,yellow,blue,green,lightblue,violet,red);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: -1;  
+    padding: 4px;
+    border-radius: 10px;
+    animation: girar 2s linear infinite;
+
+}
+.card::before{
+    filter:blur(24px);
+    opacity: 0.5;
+}
+
+@keyframes girar{
+    0%{
+        --angulo:0deg;
+    }
+    100%{
+        --angulo:360deg;
+    }
+}
